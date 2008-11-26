@@ -1,0 +1,2 @@
+
+For more information on dev_configurator, see https://github.com/cosyn/devigurator/tree/master
