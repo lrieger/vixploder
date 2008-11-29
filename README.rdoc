@@ -17,6 +17,7 @@ Description to come...
 == REQUIREMENTS:
 
 * List of requirements to come...
+** Jamis Buck's fuzzy_file_finder gem
 
 == INSTALL:
 

@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+#
+#  Created by Tom Kersten on 2008-11-26.
+#  Copyright (c) 2008. All rights reserved.
+
+require File.expand_path(File.dirname(__FILE__) + "/../lib/devigurator")
+
+require "devigurate/cli"
+
+Devigurate::CLI.execute(STDOUT, ARGV)
