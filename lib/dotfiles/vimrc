@@ -1,53 +1,52 @@
-set t_Co=256
-set nocompatible
-syntax on
-filetype on
-filetype indent on
-filetype plugin on
-set fileformats=unix,dos,mac
-set term=xterm-256color
-"set term=linux
+set t_Co=256				"Set terminal to 256 colors
+syntax on								"Turns on syntax highlighting
+set nocompatible				"Put in VIM mode, not vi...standard vi is too old-school, even for me
+filetype on							"Turns on file type detection
+filetype indent on			"Enable loading the plugin files for specific file types
+filetype plugin on			"Allow plugins to do fancy things with file-type detection
+"set fileformats=unix,dos,mac
+set scrolloff=3         "Put 3-lines of padding when scrolling up/down off screen to give context
 
 " Colors
-colorscheme rubyblue
-
+colorscheme railscasts
+"
 " Folding
-"set foldmethod=syntax
-set foldtext=getline(v:foldstart)
-set fillchars=fold:\ " note whitespace after
-set foldcolumn=2
-set foldlevel=1
-
-" Tabs
-set tabstop=2
+""set foldmethod=syntax
+"set foldtext=getline(v:foldstart)
+"set fillchars=fold:\ " note whitespace after
+"set foldcolumn=2
+"set foldlevel=1
+"
+"" Tabs
+set tabstop=2       "Tabs are 2-spaces
 set shiftwidth=2
 set expandtab
 set smarttab
 set cindent
-"only 1 space after sentences
-set cpoptions-=J
-
-" Switch between windows with <C-J> and <C-K>
+""only 1 space after sentences
+"set cpoptions-=J
+"
+"" Switch between windows with <C-J> and <C-K>
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
-set winminheight=0
-set winheight=6
-
-"set ruler
-set showmatch
-set matchtime=1
-
-set hlsearch
-map ? :nohlsearch<CR>
-set ignorecase
-set smartcase
-
-set listchars=tab:>-,trail:.
-set list
-
-set confirm
-set vb
-
-" Set up TextMate-like file searching
-map <leader>t :FuzzyFinderTextMate<CR>
+"set winminheight=0
+"set winheight=6
+"
+""set ruler
+"set showmatch
+"set matchtime=1
+"
+"set hlsearch
+"map ? :nohlsearch<CR>
+"set ignorecase
+"set smartcase
+"
+"set listchars=tab:>-,trail:.
+"set list
+"
+"set confirm
+"set vb
+"
+"" Set up TextMate-like file searching
+map ,f :FuzzyFinderTextMate<CR>
 map <F3> :NERDTreeToggle<CR>
