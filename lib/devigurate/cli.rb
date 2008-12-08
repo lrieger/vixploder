@@ -33,6 +33,8 @@ module Devigurate
         end
       end
 
+      source_dir = File.expand_path(File.dirname(__FILE__) + "/../dotfiles")
+      destination_dir = File.expand_path("~")
       backup_directory = File.expand_path("~/devigurator_vim_backups/")
       path = options[:path]
 
@@ -49,21 +51,23 @@ module Devigurate
         file_to_backup = File.expand_path(file)
         puts "Attempting to back up '#{file_to_backup}' to '#{backup_directory}'"
         if File.exists?(file_to_backup)
-          File.move file_to_backup, backup_directory, true
+          if File.symlink?(file_to_backup)
+            File.safe_unlink(file_to_backup) if File.symlink?(file_to_backup)
+          else
+            File.move file_to_backup, backup_directory, true
+          end
           puts "Move of '#{file_to_backup}' to '#{backup_directory}' complete"
         else
           puts "No '#{file}' to back up."
         end
       end
 
-			# symlink to included files
-			source_dir = File.expand_path(File.dirname(__FILE__) + "/../dotfiles")
-			destination_dir = File.expand_path("~")
-			Dir.open(source_dir).each do |f|
-				next if f == ".." || f == "."
-				File.safe_unlink("#{destination_dir}/.#{f}") if File.symlink?("#{destination_dir}/.#{f}")
-				File.symlink("#{source_dir}/#{f}", "#{destination_dir}/.#{f}")
-			end
+      # symlink to included files
+      Dir.open(source_dir).each do |f|
+        next if f == ".." || f == "."
+        File.safe_unlink("#{destination_dir}/.#{f}") if File.symlink?("#{destination_dir}/.#{f}")
+        File.symlink("#{source_dir}/#{f}", "#{destination_dir}/.#{f}")
+      end
     end
   end
 end
