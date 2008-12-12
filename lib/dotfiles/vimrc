@@ -24,7 +24,7 @@ if has("autocmd")
   set fileformats=unix,dos,mac    "This gives the end-of-line (<EOL>) formats that will be used/tried
 
   " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+  autocmd FileType text setlocal textwidth=90
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
@@ -181,11 +181,11 @@ noremap <F3> :NERDTreeToggle<CR>
 noremap <C-d> :NERDTreeToggle<CR>
 
 "-------- Most Recently Used File (MRU) plugin mapping & config
-"Open Most Recently Used window
+"Open Most Recently Used window with Ctl+o
 noremap <C-o> :MRU<CR>
 
 "Set max entries in MRU option window
-let MRU_Max_Entries = 20
+let MRU_Max_Entries = 30
 
 "Gist (http://gist.github.com) integration
 " Gist plugin options. Be sure to add a 'github'
@@ -212,6 +212,8 @@ noremap tt :tabnew<CR>
 autocmd! BufWritePost .vimrc source %
 
 "-------- Abbreviations
+"Some lorem ispum text
 abbreviate lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum bibendum hendrerit ante. Phasellus vitae enim id erat fringilla fermentum.  Pellentesque tellus. Cras eros magna, pretium ac, tincidunt id, tincidunt eget, mi. Fusce tristique sollicitudin eros. Nam augue nisi, volutpat non, cursus a, aliquam ac, magna. Sed rhoncus, ipsum vitae semper ultrices, ante nunc faucibus nunc, sed iaculis elit metus condimentum turpis. Suspendisse suscipit. Nulla eget nulla. Aliquam varius sem quis tortor. Proin eu dolor a lacus lobortis luctus. Phasellus interdum. Maecenas quis sem. Nulla facilisi.
 
+"Typing 'hh' will give you a '=>'
 abbreviate hh =>
