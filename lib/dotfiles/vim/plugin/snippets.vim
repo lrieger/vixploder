@@ -12,6 +12,6 @@ iab <silent> eal each { \|!@block_variable@!\| !@block@! }<CR><Esc>3k0;<C-R>=Eat
 iab <silent> dm def !@method@!<CR>!@method_body@!<CR>end<CR><Esc>3k0;<C-R>=Eatchar('\s')<CR>
 
 iab <silent> des describe '!@method@!' do<CR>!@its@!<CR>end<Esc>2k0;<C-R>=Eatchar('\s')<CR>
-iab <silent> it it "should !@should@!" do<CR>!@something@!<CR>end<CR><Esc>3k0;<C-R>=Eatchar('\s')<CR>
+iab <silent> iit it "should !@should@!" do<CR>!@something@!<CR>end<CR><Esc>3k0;<C-R>=Eatchar('\s')<CR>
 iab <silent> desit describe '!@method@!' do<CR>it "should !@should@!" do<CR>!@stuff@!<CR>end<CR>end<CR><Esc>5kO<Esc>;<C-R>=Eatchar('\s')<CR>
 iab <silent> bef before(:each) do<CR>end<CR><Esc>kO<C-R>=Eatchar('\s')<CR>

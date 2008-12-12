@@ -1,40 +1,14 @@
 colorscheme railscasts
 
-" Cycle 'forward' through tabs using Ctl+Tab
-map <C-Tab> :call<sid>CycleTabpages(1)<cr>
-
-" Cycle 'backward' through tabs using Ctl+Shift+Tab
-map <C-S-Tab> :call<sid>CycleTabpages(0)<cr>
-
-
-" Function to simplify switching tabs using Ctl+Tab or Ctl+Shift+Tab
-" ...Not sure about this yet...not compatible w/ cterm
-"func! <sid>CycleTabpages(forw)
-"    if a:forw
-"        normal! gt
-"    else
-"        normal! gT
-"    endif
-"    while 1
-"        redraw
-"        echo "Cycle Tab pages (Shift-Tab/Tab)"
-"        let c = s:Getchar()
-"        if c == "\t"
-"            normal! gt
-"        elseif c == "\<S-Tab>"
-"            normal! gT
-"        else
-"            exe "norm! :\<C-U>"
-"            call feedkeys(c)
-"            break
-"        endif
-"    endwhile
-"endfunc
+"-------- Local Overrides
+"If you have options you'd like to override locally for
+"some reason (don't want to store something in a
+"publicly-accessible repository, machine-specific settings, etc.),
+"you can create a '.local_gvimrc' file in your home directory
+"(ie: ~/.local_gvimrc) and it will be 'sourced' here and override
+"any settings in this file.
 "
-"func! s:Getchar()
-"    let c = getchar()
-"    if c != 0
-"        let c = nr2char(c)
-"    endif
-"    return c
-"endfunc 
+"NOTE: YOU MAY NOT WANT TO ADD ANY LINES BELOW THIS
+if filereadable(expand('~/.local_gvimrc'))
+  source ~/.local_gvimrc
+end
