@@ -47,7 +47,7 @@ module Devigurate
       end
 
       # copy current .vimrc file to ~/devigurator_vim_backups
-      ["~/.vimrc", "~/.vim", "~/.gvimrc"].each do |file|
+      ["~/.vimrc", "~/.vim", "~/.gvimrc", "~/.aliases"].each do |file|
         file_to_backup = File.expand_path(file)
         puts "Attempting to back up '#{file_to_backup}' to '#{backup_directory}'"
         if File.exists?(file_to_backup)

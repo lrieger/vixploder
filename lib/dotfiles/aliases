@@ -1,0 +1,27 @@
+# Subversion
+alias up='svn up --ignore-externals'
+
+# Git
+#alias gd='git diff | opendiff'
+alias gst='git status'
+alias gl='git pull'
+alias gp='git push'
+alias gc='git commit -v'
+alias gca='git commit -v -a'
+alias gb='git branch'
+alias gba='git branch -a'
+alias ga='git add'
+alias g='git'
+
+# Common command aliases
+alias vil='vi $_'
+
+# Rails
+alias ss='./script/server --debugger'
+alias sas='./script/autospec'
+alias sc='./script/console'
+alias sg='./script/generate'
+
+# Textmate alias that will be rmeoved after we determine that it
+# is inferior to vim/vi
+alias mr='mate app config db features lib public test spec vendor/plugins vendor/gems'
