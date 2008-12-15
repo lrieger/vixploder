@@ -1,22 +1,63 @@
-= dev_configurator
-
-* FIX (url)
+= devigurator
 
 == DESCRIPTION:
 
-Description to come...
+A simple 'development configuration' tool used to distribute common 'dotfiles' across multiple machines (most notably a solid base for VIM and a few handy aliases for Rails development and working with Git). The idea is not incredibly novel, but after realizing how poor the default VIM configuration is, I wanted to be able to share mine with a few friends...
+
+Devigurator is designed to give room for machine-/user-specific overrides. For example, the <pre>.vimrc</pre> file sources a <pre>~/.local_vimrc</pre>file sources a <pre>~/.local_vimrc</pre>. These 'local dotfiles' are intentionally left out of version control and intended for settings that are either machine-specific or something a user may not want to be in a publicly-available repository. Another example of such content would be aliases for SSH-ing into a server with a particular username (ie: 'site' aliased to 'ssh my_username@my_website.com').
+
+The VIM configuration is tailored to Ruby/Rails developers at this point, as that is what I currently work with/on. The intention of this project is not to be the "setup everyone uses without changing". Instead, fork it and set your own 'sane' defaults for whatever your preferences are and then use that as your own base. The <pre>.vimrc</pre> file is extensively commented. Turning off a setting is as easy as putting a '"' (double-quote character) as the first character of the line. Modifying it is either intuitive or a ':help <setting name>' away for you.
+
+The <pre>devigurate</pre> command will backup & symlink any files named <pre>.<filename></pre> in your home directory with each file/directory in <pre>lib/dotfiles</pre>. For example, there is a <pre>vimrc</pre> file in <pre>lib/dotfiles</pre>...which will be symlinked to <pre>~/.vimrc</pre>. Same goes for the <pre>.vim</pre> directory.
+
 
 == FEATURES/PROBLEMS:
+The easiest way to see these
 
-* List of features or problems to come...
+=== Shell Aliases
+==== SVN
+* up: performs an 'svn update' and ignores externals
 
-== SYNOPSIS:
+==== Git
+* gst: 'git status'
+* gl:  'git pull'
+* gp:  'git push'
+* gc:  'git commit -v'
+* gca: 'git commit -v -a'
+* gb:  'git branch'
+* gba: 'git branch -a'
+* ga:  'git add'
+* g:   'git'
 
-  Code sample of usage to come...
+==== Misc
+* vil: 'vi $_'  # Opens last argument of previous command in <pre>vi</pre>
+
+# Rails
+alias ss='./script/server --debugger'
+alias sas='./script/autospec'
+alias sc='./script/console'
+alias sg='./script/generate'
+
+# Textmate alias that will be rmeoved after we determine that it
+# is inferior to vim/vi
+alias mr='mate app config db features lib public test spec vendor/plugins vendor/gems'
+
+=== VIM Configuration
+The VIM configuration will be covered in more detail elsewhere (YTBD), but a few of the 'highlights' are:
+
+* Uses a 256-color theme which works in both terminal VIM and gVim (confirmed with MacVIM on Mac OS 10.5 only at this point). One thing to note is the requirement of a terminal application that supports 256-colors...which means the 'Terminal.app' on Mac OS is out. I personally recommend iTerm (http://iterm.sourceforge.net/), but the choice is yours.
+* Has Jamis Buck's (awesome) FuzzyFinderTextmate plugin set up to '\-f' (backslash-f) integrated in
+* A couple useful abbreviations (ex: 'lorem' is replaced with a paragraph of 'Lorem ipsum' text, 'hh' is replaced with '=>')
+* Sane defaults most people will expect.
+** Things like: arrow keys being correctly mapped, auto-indenting, being able to 'delete' to a previous line, soft tabs.
 
 == REQUIREMENTS:
 
-* List of requirements to come...
+* VIM compiled with Ruby support
+** You can check this by start up vi
+** For Mac-users: MacVim comes with this built in, but you may want to check your 'terminal' version of VIM if you want to be able to use <pre>vi</pre> in the terminal with the same feature-set.
+* A 256-color-capable terminal application
+** For Mac-users: As of Version 2.0.1, build 240, Terminal.app on Mac OS does not meet this requirement
 
 == INSTALL:
 
