@@ -35,7 +35,7 @@ module Devigurate
 
       source_dir = File.expand_path(File.dirname(__FILE__) + "/../dotfiles")
       destination_dir = File.expand_path("~")
-      backup_directory = File.expand_path("~/devigurator_vim_backups/")
+      backup_directory = File.expand_path("~/devigurator_backup/")
       path = options[:path]
 
       puts "Backing up current settings in case a restore is necessary..."
