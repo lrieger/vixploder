@@ -42,15 +42,15 @@ The VIM configuration will be covered in more detail elsewhere (YTBD), but a few
 >            user = [your_username_here]
 >            token = [your_github_token_here]
 
-        Then:
+      Then:
 
 >          :Gist -p # uploads entire file to a private gist in your account
 >          :Gist    # uploads entire file to a public gist, also linked to your account
 >          :Gist [gist # or private ID]  # reads Gist into VI for editing
 
-        Or, select the code you want to upload (in visual mode or with your mouse) and then execute the same commands and it will operate only on the selected code (ie: it won't send the entire file).
+      Or, select the code you want to upload (in visual mode or with your mouse) and then execute the same commands and it will operate only on the selected code (ie: it won't send the entire file).
 
-        If you are on Mac OS X, it automatically copies the URL of your new gist to your clipboard so you can paste it to your l33t-h4ck3r friends to help you out...
+      If you are on Mac OS X, it automatically copies the URL of your new gist to your clipboard so you can paste it to your l33t-h4ck3r friends to help you out...
 
   - _Comments.vim_ ([link](http://www.vim.org/scripts/script.php?script_id=1528))
     - (Un)Comment lines of code by hitting `Ctl+c`
