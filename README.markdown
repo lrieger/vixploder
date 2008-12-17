@@ -20,7 +20,9 @@ What's included:
 The VIM configuration will be covered in more detail elsewhere (YTBD), but a few of the 'highlights' are:
 
 - **Terminal & gVim color schemes (see 'Requirements' section for terminal support)**
-    - Uses a 256-color theme which works in both terminal VIM and gVim (confirmed with MacVIM on Mac OS 10.5 only at this point). One thing to note is the requirement of a terminal application that supports 256-colors...which means the 'Terminal.app' on Mac OS is out. I personally use/recommend iTerm (http://iterm.sourceforge.net/) on Mac OS X, but the choice is yours.
+    - Uses a 256-color theme which works in both terminal VIM and gVim (confirmed with MacVIM on Mac OS 10.5 only at this point). One thing to note is the requirement of a terminal application that supports 256-colors...which means the 'Terminal.app' on Mac OS is out. I personally use/recommend [iTerm](http://iterm.sourceforge.net/) on Mac OS X, but the choice is yours.
+
+    - **NOTE:** If you _don't_ have a 256-color-capable terminal application...you will definitely have to modify the default configuration to meet your needs. One of the goals of this project is to create a terminal-VIM that looks as nice as gVim (MacVim being the 'bar' on OS X).
 - **Has Jamis Buck's (awesome) [FuzzyFinderTextmate](http://github.com/jamis/fuzzyfinder_textmate/tree/master) plugin bundled in and set up to '\-f' (backslash-f)**
     - ...which build's upon the equally-awesome original [FuzzyFinder](http://www.vim.org/scripts/script.php?script_id=1984) plugin by Takeshi NISHIDA
 - **Mouse support is enabled** (yes, in the terminal too...)
