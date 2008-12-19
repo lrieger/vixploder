@@ -1,10 +1,19 @@
 set nocompatible                "Put in VIM mode, not vi...standard vi is too old-school, even for me
 
-"-------- Syntax & coloring
-set term=xterm-256color         "Set terminal type to 256-color capable
+" This is a hacked method of determining the platform we are on...
+let s:platform = system("uname")
+let s:on_linux = s:platform[0] ==? "L"
+let s:on_mac   = s:platform[0] ==? "D"
+
+"-------- Terminal setup
+set term=xterm-256color
+
 set t_Co=256                    "Set terminal to 256 colors
+
+"-------- Syntax & coloring
 syntax on                       "Turns on syntax highlighting...SHOULD BE AFTER 't_Co' & 'term' declarations
-colorscheme railscasts
+"colorscheme railscasts         "disabling until I get it linux-compatible
+colorscheme rubyblue
 
 
 " Some of this was taken from or added to from the 'vimrc_example.vim' file
@@ -52,14 +61,25 @@ if has("autocmd")
 endif " has("audocmd")
 
 "Arrow-key mappings, for the 'unconverted' ;-)
-" Up
-set t_ku=[A
-" Down
-set t_kd=[B
-" Right
-set t_kr=[C
-" Left
-set t_kl=[D
+if s:on_linux
+  " Up
+  set t_ku=OA
+  " Down
+  set t_kd=OB
+  " Right
+  set t_kr=OC
+  " Left
+  set t_kl=OD
+elseif s:on_mac
+  " Up
+  set t_ku=[A
+  " Down
+  set t_kd=[B
+  " Right
+  set t_kr=[C
+  " Left
+  set t_kl=[D
+endif
 
 
 "-------- Folding
@@ -129,6 +149,7 @@ set confirm           "Always confirms before performing an operation which
                       " may produce undesireable consequences (...within reason).
                       " An example would be saving a file before exiting with
                       " a ":q"
+
 
 set vb                "Use visual bell instead of beeping when errors/messages
                       " occur. If _no_ bells or visual feedback you can
@@ -200,8 +221,10 @@ let MRU_Max_Entries = 30
 "   user = <your username>
 "   token = <your account token>
 " Set up clipboard to use OS X's 'pbcopy' command
-if has("macunix")
+if s:on_mac
   let g:gist_clip_command = 'pbcopy'
+elseif s:on_linux
+  let g:gist_clip_command = 'xclip -selection clipboard'
 endif
 
 
