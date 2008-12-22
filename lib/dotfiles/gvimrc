@@ -2,6 +2,10 @@ colorscheme railscasts
 
 set guioptions-=T     "Hide the toolbar
 
+" set window size
+set lines=50
+set columns=150
+
 "-------- Local Overrides
 "If you have options you'd like to override locally for
 "some reason (don't want to store something in a
