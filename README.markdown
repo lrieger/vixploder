@@ -4,7 +4,7 @@ devigurator - a badly named project intended to simplify a common problem
 DESCRIPTION:
 ------------
 
-A simple 'dotfiles' managment tool used to distribute common configuration files across multiple machines (initially consisting of a solid base for VIM, a few handy aliases for Rails development, and working with Git). The idea is not incredibly novel, but after realizing how poor the default VIM configuration is (on Mac OS X, at least), I wanted to be able to share mine with a few friends...
+A simple 'dotfiles' management tool used to distribute common configuration files across multiple machines (initially consisting of a solid base for VIM, a few handy aliases for Rails development, and working with Git). The idea is not incredibly novel, but after realizing how poor the default VIM configuration is (on Mac OS X, at least), I wanted to be able to share mine with a few friends...
 
 Devigurator is designed to give room for machine-/user-specific overrides. For example, the `.vimrc` file sources a `~/.local_vimrc` file sources a `~/.local_vimrc`. These 'local dotfiles' are intentionally left out of version control and intended for settings that are either machine-specific or something a user may not want to be in a publicly-available repository. A couple examples of such content would be aliases for SSH-ing into a server with a particular username (ie: 'site' aliased to 'ssh my_username@my_website.com'), or aliases to machine-specific paths for a project directory.
 
