@@ -25,3 +25,6 @@ alias sg='./script/generate'
 # Textmate alias that will be rmeoved after we determine that it
 # is inferior to vim/vi
 alias mr='mate app config db features lib public test spec vendor/plugins vendor/gems'
+
+# Load ~/.local_aliases file if it exists & is readable
+[ -r ~/.local_aliases ] && . ~/.local_aliases
