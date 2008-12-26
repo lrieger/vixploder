@@ -196,15 +196,24 @@ noremap ? :nohlsearch<CR>
 
 "Set up TextMate-like cmd-T file searching using <leader>-f ('backslash'-f)
 noremap <leader>f :FuzzyFinderTextMate<CR>
-"Limit the number of matches returned to 50 in FuzzyFinder searches
-let g:fuzzy_matching_limit='50'
-let g:fuzzy_roots=['app', 'lib', 'config']
-"Ignore the following glob file patters in FuzzyFinder searches
-let g:fuzzy_ignore='*.log'
 
 "Toggle NERDTree window using F3 key
 noremap <F3> :NERDTreeToggle<CR>
 noremap <C-d> :NERDTreeToggle<CR>
+
+
+"-------- FuzzyFinderTextmate plugin settings
+"Limit the number of matches returned to 50 in FuzzyFinder searches
+let g:fuzzy_matching_limit='50'
+
+"Ignore the following glob file patters in FuzzyFinder searches
+let g:fuzzy_ignore='*.log'
+
+" If we are in a Rails app, just search across the app, lib, config, spec, and test
+" directories
+if filereadable(expand('./vendor'))
+  let g:fuzzy_roots=['app', 'lib', 'config', 'spec', 'test']
+endif
 
 "-------- Most Recently Used File (MRU) plugin mapping & config
 "Open Most Recently Used window with Ctl+o
