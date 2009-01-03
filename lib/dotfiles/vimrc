@@ -3,7 +3,7 @@ set nocompatible                "Put in VIM mode, not vi...standard vi is too ol
 " This is a hacked method of determining the platform we are on...
 let s:platform = system("uname")
 let s:on_linux = has('unix')    || s:platform =~? "linux"
-let s:on_mac   = has('macunix') || s:platform =~? '^darwin'
+let s:on_mac   = has('macunix') || s:platform =~? 'Darwin'
 
 "-------- Terminal setup
 set term=xterm-256color
@@ -70,7 +70,9 @@ if s:on_linux
   set t_kr=OC
   " Left
   set t_kl=OD
-elseif s:on_mac
+endif
+
+if s:on_mac
   " Up
   set t_ku=[A
   " Down
