@@ -1,8 +1,8 @@
 "=============================================================================
 " File: gist.vim
 " Author: Yasuhiro Matsumoto <mattn.jp@gmail.com>
-" Last Change: 18-Nov-2008. Jan 2008
-" Version: 1.0
+" Last Change: 22-Dec-2008. Jan 2008
+" Version: 1.5
 " Usage:
 "
 "   :Gist
@@ -27,16 +27,24 @@
 "     list gists from all.
 "
 " Tips:
-"   if set g:gist_clip_command, gist.vim will copy the gist code.
+"   * if set g:gist_clip_command, gist.vim will copy the gist code.
 "
-"   # mac
-"   let g:gist_clip_command = 'pbcopy'
+"     # mac
+"     let g:gist_clip_command = 'pbcopy'
 "
-"   # linux
-"   let g:gist_clip_command = 'xclip -selection clipboard'
+"     # linux
+"     let g:gist_clip_command = 'xclip -selection clipboard'
 "
-"   # others(cygwin?)
-"   let g:gist_clip_command = 'putclip'
+"     # others(cygwin?)
+"     let g:gist_clip_command = 'putclip'
+"
+"   * if you want to detect filetype from gist's filename...
+"
+"     # detect filetype if vim failed auto-detection.
+"     let g:gist_detect_filetype = 1
+"
+"     # detect filetype always.
+"     let g:gist_detect_filetype = 2
 "
 " GetLatestVimScripts: 2423 1 :AutoInstall: gist.vim
 
@@ -53,6 +61,10 @@ endif
 if !executable('curl')
   echoerr "Gist: require 'curl' command"
   finish
+endif
+
+if !exists('g:gist_detect_filetype')
+  let g:gist_detect_filetype = 0
 endif
 
 function! s:nr2hex(nr)
@@ -112,12 +124,29 @@ function! s:GistList(user, token, gistls)
   normal! gg
 endfunction
 
+function! s:GistDetectFiletype(gistid)
+  let url = 'http://gist.github.com/'.a:gistid
+  let res = system('curl -s '.url)
+  let res = substitute(res, '^.*<div class="meta">[\r\n ]*<div class="info">[\r\n ]*<span>\([^>]\+\)</span>.*$', '\1', '')
+  let res = substitute(res, '.*\(\.[^\.]\+\)$', '\1', '')
+  if res =~ '^\.'
+    silent! exec "doau BufRead *".res
+  else
+    silent! exec "setlocal ft=".tolower(res)
+  endif
+endfunction
+
 function! s:GistGet(user, token, gistid)
   let url = 'http://gist.github.com/'.a:gistid.'.txt'
   exec 'silent split gist:'.a:gistid
+  filetype detect
   exec 'silent 0r! curl -s '.url
   setlocal nomodified
+  doau StdinReadPost <buffer>
   normal! gg
+  if (&ft == '' && g:gist_detect_filetype == 1) || g:gist_detect_filetype == 2
+    call s:GistDetectFiletype(a:gistid)
+  endif
   if exists('g:gist_clip_command')
     exec 'silent w !'.g:gist_clip_command
   endif
