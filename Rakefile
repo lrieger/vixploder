@@ -4,11 +4,12 @@ require 'hanna/rdoctask'
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
-$hoe = Hoe.new('devgurator', Devigurator::VERSION) do |p|
+$hoe = Hoe.new('devigurator', Devigurator::VERSION) do |p|
   p.developer('Tom Kersten', 'tom.kersten@cosyntech.com')
   p.changes              = p.paragraphs_of("History.txt", 0..1).join("\n\n")
   p.post_install_message = 'PostInstall.txt'
-  p.rubyforge_name       = p.name
+  p.summary              = "Tool for simplifying the distribution of environment configuration files ('dotfiles') across multiple *nix-based nodes."
+  #p.rubyforge_name       = p.name
   # p.extra_deps         = [
   #   ['activesupport','>= 2.0.2'],
   # ]
