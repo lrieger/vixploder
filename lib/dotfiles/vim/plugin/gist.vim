@@ -196,7 +196,7 @@ function! s:GistPut(user, token, content, private)
   let res = substitute(res, '^.*: ', '', '')
   let throwaway = system('echo '.quote.res.quote.'| pbcopy')
   echo 'Done!'
-  echo 'Gist URL (also copied to your clipboard): '.res
+  echo 'Gist URL: '.res
 endfunction
 
 function! Gist(line1, line2, ...)
