@@ -1,2 +1,2 @@
 
-For more information on dev_configurator, see https://github.com/cosyn/devigurator/tree/master
+For more information on vixploder, see https://github.com/tomkersten/vixploder/tree/master

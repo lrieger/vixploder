@@ -1,10 +1,10 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
-require 'devigurate/cli'
+require 'vixplode/cli'
 
-describe Devigurate::CLI, "execute" do
+describe Vixplode::CLI, "execute" do
   before(:each) do
     @stdout_io = StringIO.new
-    Devigurate::CLI.execute(@stdout_io, [])
+    Vixplode::CLI.execute(@stdout_io, [])
     @stdout_io.rewind
     @stdout = @stdout_io.read
   end

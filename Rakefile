@@ -1,10 +1,10 @@
 %w[rubygems rake rake/clean fileutils newgem rubigen].each { |f| require f }
-require File.dirname(__FILE__) + '/lib/devigurator'
+require File.dirname(__FILE__) + '/lib/vixploder'
 require 'hanna/rdoctask'
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
-$hoe = Hoe.new('devigurator', Devigurator::VERSION) do |p|
+$hoe = Hoe.new('vixploder', Vixploder::VERSION) do |p|
   p.developer('Tom Kersten', 'tom.kersten@cosyntech.com')
   p.changes              = p.paragraphs_of("History.txt", 0..1).join("\n\n")
   p.post_install_message = 'PostInstall.txt'

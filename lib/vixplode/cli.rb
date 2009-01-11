@@ -3,7 +3,7 @@ require 'optparse'
 require 'highline'
 require 'ftools'
 
-module Devigurate
+module Vixplode
   class CLI
     def self.execute(stdout, arguments=[])
       options = {
@@ -35,7 +35,7 @@ module Devigurate
 
       source_dir = File.expand_path(File.dirname(__FILE__) + "/../dotfiles")
       destination_dir = File.expand_path("~")
-      backup_directory = File.expand_path("~/devigurator_backup/")
+      backup_directory = File.expand_path("~/vixploder_backup/")
       path = options[:path]
 
       puts "Backing up current settings in case a restore is necessary..."
@@ -46,7 +46,7 @@ module Devigurate
         Dir.mkdir(backup_directory) unless File.exists?(backup_directory)
       end
 
-      # copy current .vimrc file to ~/devigurator_vim_backups
+      # copy current .vimrc file to ~/vixploder_vim_backups
       ["~/.vimrc", "~/.vim", "~/.gvimrc", "~/.aliases"].each do |file|
         file_to_backup = File.expand_path(file)
         puts "Attempting to back up '#{file_to_backup}' to '#{backup_directory}'"

@@ -1,16 +1,16 @@
-devigurator - a badly named project intended to simplify a common problem
+vixploder - "it may explode your vim"
 =========================================================================
 
 DESCRIPTION:
 ------------
 
-A simple 'dotfiles' management tool used to distribute common configuration files across multiple machines (initially consisting of a solid base for VIM, a few handy aliases for Rails development, and working with Git). The idea is not incredibly novel, but after realizing how poor the default VIM configuration is (on Mac OS X, at least), I wanted to be able to share mine with a few friends...
+A simple 'dotfiles' management tool used to distribute common configuration files across multiple machines (initially consisting of a solid base for VIM, a few handy aliases for Rails development, and working with Git). The idea is not incredibly novel, but after realizing how poor the default VIM configuration is (on Mac OS X, at least), I wanted to be able to share mine with a few friends. Standard configuration files for other tools can easily be added to the tool, such as a core `.profile`, `.screenrc` file, or Emacs config files...VIM is just the "test-case" for the distribution method at this point.
 
-Devigurator is designed to give room for machine-/user-specific overrides. For example, the `.vimrc` file sources a `~/.local_vimrc` file sources a `~/.local_vimrc`. These 'local dotfiles' are intentionally left out of version control and intended for settings that are either machine-specific or something a user may not want to be in a publicly-available repository. A couple examples of such content would be aliases for SSH-ing into a server with a particular username (ie: 'site' aliased to 'ssh my_username@my_website.com'), or aliases to machine-specific paths for a project directory.
+Vixploder is designed to give room for machine-/user-specific overrides. For example, the `.vimrc` file sources a `~/.local_vimrc` file. These 'local dotfiles' are intentionally left out of version control and intended for settings that are either machine-specific or something a user may not want to be in a publicly-available repository. A couple examples of such content would be aliases for SSH-ing into a server with a particular username (ie: 'site' aliased to 'ssh my_username@my_website.com'), or aliases to machine-specific paths for a project directory (both of these examples would be for your shell setup files, not vimrc, but the logic is the same...maybe you want a different colorscheme on a particular server in VIM).
 
 The VIM configuration is tailored to Ruby/Rails developers at this point, as that is what I currently work with/on. The intention of this project is not to be the "setup everyone uses without changing". Instead, fork it and set your own "sane" defaults for whatever your preferences are and then use that as your own base. The `.vimrc` file is extensively commented. Turning off a setting is as easy as putting a '"' (double-quote character) as the first character of the line. Modifying it is either intuitive or as easy as typing `:help <setting name>` (in vi) to check the possible parameters the setting accepts.
 
-The `devigurate` command will backup & symlink any files named `.[filename]` in your home directory (which it replaces) with each file/directory in `lib/dotfiles` (of the devigurator directory structure). For example, there is a `vimrc` file in `lib/dotfiles`...which will be symlinked to `~/.vimrc`. Same goes for the `.vim` directory. The original files are backed up to `~/devigurator_backup/`. If you want to revert the installation, you can remove the symlinks created and copy your files back into your home directory (there will be a script to do this for you soon...).
+The `vixplode` command will backup & symlink any files named `.[filename]` in your home directory (which it replaces) with each file/directory in `lib/dotfiles` (of the vixploder directory structure). For example, there is a `vimrc` file in `lib/dotfiles`...which will be symlinked to `~/.vimrc`. Same goes for the `.vim` directory. The original files are backed up to `~/vixploder_backup/`. If you want to revert the installation, you can remove the symlinks created and copy your files back into your home directory (there will be a script to do this for you soon...).
 
 
 What's included:
@@ -133,7 +133,7 @@ The VIM configuration will be covered in more detail elsewhere (YTBD), but a few
 
 
 ### Shell Aliases
-*NOTE:* For now, there is an `aliases` which will be symlinked to `~/.aliases`. Because `devigurator` is not sending any default shell profiles (yet), you need to source this file in the appropriate shell initiliazation file if you are interested in using the aliases outlined below (.profile, .tcshrc, .zshrc, .bashrc...whatever your preference).
+*NOTE:* For now, there is an `aliases` which will be symlinked to `~/.aliases`. Because `vixploder` is not sending any default shell profiles (yet), you need to source this file in the appropriate shell initiliazation file if you are interested in using the aliases outlined below (.profile, .tcshrc, .zshrc, .bashrc...whatever your preference).
 
 #### SVN
 
