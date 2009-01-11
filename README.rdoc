@@ -1,0 +1,119 @@
+= vixploder - "it may explode your vim"
+
+== DESCRIPTION:
+A simple 'dotfiles' management tool used to distribute common configuration files across multiple machines (initially consisting of a solid base for VIM, a few handy aliases for Rails development, and working with Git). The idea is not incredibly novel, but after realizing how poor the default VIM configuration is (at least on OS X), I wanted to be able to share mine with a few friends. Standard configuration files for other tools can easily be added to the tool, such as a core +.profile+, +.screenrc+ file, or Emacs config files...VIM is just the "test-case" for the distribution method at this point.
+
+Vixploder is designed to give room for machine-/user-specific overrides. For example, the +.vimrc+ file sources a <tt>~/.local_vimrc</tt> file. These 'local dotfiles' are intentionally left out of version control and intended for settings that are either machine-specific or something a user may not want to be in a publicly-available repository. A couple examples of such content would be aliases for SSH-ing into a server with a particular username (ie: +site+ aliased to <tt>ssh my_username@my_website.com</tt>), or aliases to machine-specific paths for a project directory (both of these examples would be for your shell setup files, not vimrc, but the logic is the same...maybe you want a different colorscheme on a particular server in VIM).
+
+The VIM configuration is tailored to Ruby/Rails developers at this point, as that is what I currently work with/on. The intention of this project is not to be the "setup everyone uses without changing". Instead, fork it and set your own "sane" defaults for whatever your preferences are and then use that as your own base. The +.vimrc+ file is extensively commented. Turning off a setting is as easy as putting a '"' (double-quote character) as the first character of the line. Modifying it is either intuitive or as easy as typing <tt>:help <setting name></tt> (in vi) to check the possible parameters the setting accepts.
+
+The +vixplode+ command will backup & symlink any files named <tt>.[filename]</tt> in your home directory (which it replaces) with each file/directory in +lib/dotfiles+ (of the vixploder directory structure). For example, there is a +vimrc+ file in +lib/dotfiles+...which will be symlinked to <tt>~/.vimrc</tt>. Same goes for the +vim+ directory. The original files are backed up to <tt>~/vixploder_backup/</tt>. If you want to revert the installation, you can remove the symlinks created and copy your files back into your home directory (there will be a script to do this for you soon...).
+
+
+=== What's included:
+==== Solid Default VIM Configuration
+- The VIM configuration will be covered in more detail elsewhere (YTBD), but a few of the 'highlights' are:
+  - Pleasant-looking vim & gVim color schemes (see 'Requirements' section for terminal support)
+  - Has Jamis Buck's (awesome) FuzzyFinderTextmate[http://github.com/jamis/fuzzyfinder_textmate/tree/master] plugin bundled in and set up to <tt>/-f</tt> (backslash-f)
+  - Mouse support is enabled (yes, in the terminal too...)
+  - Ships with a few other popular plugins (and maybe some not-so-popular that I find useful/cool), such as:
+    - _NERDTree.vim_ (link[http://www.vim.org/scripts/script.php?script_id=1658])
+      - Directory-tree on sidebar of window (similar to TextMate's "drawer")
+    - _Rails.vim_ (link[http://www.vim.org/scripts/script.php?script_id=1567])
+      - Plugin by Tim Pope which makes jupming around to different files in a Rails app a snap
+    - _Gist.vim_
+      - Integration with gist.github.com[http://gist.github.com]
+    - _GITDiff.vim_
+      - Shows a diff of what has changed in the current file since HEAD
+    - _Comments.vim_ (link[http://www.vim.org/scripts/script.php?script_id=1528])
+      - Easily (un)comment blocks of code by hitting +Ctl-c+
+    - _Matchit.vim_ (link[http://www.vim.org/scripts/script.php?script_id=39])
+      - Enhanced match-support for opening/closing brackets & method declarations
+    - <i>MRU.vim (Most Recently Used files)</i> (link[http://www.vim.org/scripts/script.php?script_id=521])
+      - Quickly jump to recently used files by hitting +Ctl-o+
+    - _Rspec.vim_
+      - Adds shortcuts for running Rspec tests (read rspec.vim & modify to suit your preferences)
+    - _Snippets.vim_ (link[http://www.vim.org/scripts/script.php?script_id=1318])
+      - Makes it dead-simple to add "snippets" of code which will auto-expand for you...similar to many other editors (TextMate obviously being a popular one in Rails-land).
+    - _Surround.vim_ (link[http://www.vim.org/scripts/script.php?script_id=1697])
+      - Simplifies "surrounding" text with a pattern of characters, such as quotes, parens, or opening & closing HTML/XML tags.
+    - _SuperTab.vim_ (link[http://www.vim.org/scripts/script.php?script_id=1643])
+      - Gives tab-completion in VIM. Works pretty well with Ruby. I do not use this often, but...it's kind of neat...and can come in handy at times.
+  - A couple useful abbreviations
+    - +lorem+ is expanded to a paragraph of 'Lorem ipsum' text
+    - +hh+ becomes <tt>=></tt>
+  - Sane defaults most people familiar with other editors would expect
+    - Things like: arrow keys being correctly mapped, auto-indenting, being able to 'delete' to a previous line, soft tabs, et cetera...
+
+
+==== Shell Aliases
+*NOTE:* For now, there is an +aliases+ file which will be symlinked to +~/.aliases+. Because +vixploder+ is not sending any default shell profiles (yet), you need to source this file in the appropriate shell initiliazation file if you are interested in using the aliases outlined below (<tt>.profile</tt>, <tt>.tcshrc</tt>, <tt>.zshrc</tt>, <tt>.bashrc</tt>...whatever your preference).
+
+* SVN
+  - +up+ : performs an <tt>svn update --ignore-externals</tt> to make updates a bit faster
+* Git
+  - <tt>g</tt>:   <tt>git</tt>
+  - <tt>gst</tt>: <tt>git status</tt>
+  - <tt>gl</tt>:  <tt>git pull</tt>
+  - <tt>gp</tt>:  <tt>git push</tt>
+  - <tt>gc</tt>:  <tt>git commit -v</tt>
+  - <tt>gca</tt>: <tt>git commit -v -a</tt>
+  - <tt>gb</tt>:  <tt>git branch</tt>
+  - <tt>gba</tt>: <tt>git branch -a</tt>
+  - <tt>ga</tt>:  <tt>git add</tt>
+
+* Rails
+  - <tt>ss</tt>: <tt>./script/server --debugger</tt>
+  - <tt>sc</tt>: <tt>./script/console</tt>
+  - <tt>sg</tt>: <tt>./script/generate</tt>
+  - <tt>sas</tt>:<tt>./script/autospec</tt>
+
+* Misc
+  - <tt>vil</tt>:  <tt>vi $_</tt> (which opens last argument of previous command in vi...useful for...say...after you copy a file)
+  - <tt>mr</tt>:  <tt>mate app config db features lib public test spec vendor/plugins vendor/gems</tt>
+
+
+== REQUIREMENTS:
+
+- VIM compiled with Ruby support
+
+  - You can check this by starting up vi and typing +:version.+ If you have a <tt>+ruby</tt>, you are set. If not, you need to either compile in support yourself, or find a package which has done it for you.
+
+    - For Mac-users: MacVim comes with this built in, but you may want to check your 'terminal' version of VIM if you want to be able to use +vi+ in the terminal with the same feature-set. If you have [MacPorts](http://www.macports.org/) installed, you should be able to just run:
+
+        sudo port install vim+ruby
+
+      ...and be all set.
+
+- A 256-color-capable terminal application
+
+  - For Mac-users: As of Version 2.0.1, build 240, Terminal.app on Mac OS X (10.5.5) does not meet this requirement. [iTerm](http://iterm.sourceforge.net/) does. Other applications may as well (recommendations welcome)...
+
+== INSTALL:
+
+- Install instructions to come...
+
+== LICENSE:
+
+(The MIT License)
+
+Copyright (c) 2008 Tom Kersten
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
