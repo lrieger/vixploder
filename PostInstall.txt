@@ -1,2 +1,19 @@
+To use vixploder, execute:
 
-For more information on vixploder, see https://github.com/tomkersten/vixploder/tree/master
+  vixplode
+
+...and try out VI. If it doesn't look/function "normal" to you,
+confirm your system meets all the requirements outlined in
+the README (http://bit.ly/m9Wk).
+
+If you want to "undo" the changes, you can unlink the newly created
+files in your home directory and restore them from ~/vixploder_backups.
+
+mv ~/vixploder_backups/.* ~/
+
+For more information on vixploder, see https://github.com/tomkersten/vixploder
+
+NOTE: To create private Gists on http://gist.github.com, make sure you have set up
+your username/token entries in your ~/.gitconfig file (refer to: http://bit.ly/OCgg)
+
+Enjoy!
