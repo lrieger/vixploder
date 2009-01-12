@@ -103,4 +103,3 @@ spec/spec_helper.rb
 spec/vixplode_cli_spec.rb
 spec/vixploder_spec.rb
 tasks/rspec.rake
-vixploder.gemspec

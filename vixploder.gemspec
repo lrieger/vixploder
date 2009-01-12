@@ -2,19 +2,43 @@
 
 Gem::Specification.new do |s|
   s.name = %q{vixploder}
-  s.version = "0.1.0"
-
+  s.version = "0.1.2"
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tom Kersten"]
   s.date = %q{2009-01-11}
-  s.description = %q{A simple 'dotfiles' management tool used to distribute common configuration files across multiple machines (initially consisting of a solid base for VIM, a few handy aliases for Rails development, and working with Git). The idea is not incredibly novel, but after realizing how poor the default VIM configuration is (at least on OS X), I wanted to be able to share mine with a few friends. Standard configuration files for other tools can easily be added to the tool, such as a core +.profile+, +.screenrc+ file, or Emacs config files...VIM is just the "test-case" for the distribution method at this point.  Vixploder is designed to give room for machine-/user-specific overrides. For example, the +.vimrc+ file sources a <tt>~/.local_vimrc</tt> file. These 'local dotfiles' are intentionally left out of version control and intended for settings that are either machine-specific or something a user may not want to be in a publicly-available repository. A couple examples of such content would be aliases for SSH-ing into a server with a particular username (ie: +site+ aliased to <tt>ssh my_username@my_website.com</tt>), or aliases to machine-specific paths for a project directory (both of these examples would be for your shell setup files, not vimrc, but the logic is the same...maybe you want a different colorscheme on a particular server in VIM).  The VIM configuration is tailored to Ruby/Rails developers at this point, as that is what I currently work with/on. The intention of this project is not to be the "setup everyone uses without changing". Instead, fork it and set your own "sane" defaults for whatever your preferences are and then use that as your own base. The +.vimrc+ file is extensively commented. Turning off a setting is as easy as putting a '"' (double-quote character) as the first character of the line. Modifying it is either intuitive or as easy as typing <tt>:help <setting name></tt> (in vi) to check the possible parameters the setting accepts.  The +vixplode+ command will backup & symlink any files named <tt>.[filename]</tt> in your home directory (which it replaces) with each file/directory in +lib/dotfiles+ (of the vixploder directory structure). For example, there is a +vimrc+ file in +lib/dotfiles+...which will be symlinked to <tt>~/.vimrc</tt>. Same goes for the +vim+ directory. The original files are backed up to <tt>~/vixploder_backup/</tt>. If you want to revert the installation, you can remove the symlinks created and copy your files back into your home directory (there will be a script to do this for you soon...).}
+  s.description = "A simple 'dotfiles' management tool used to distribute common configuration files across multiple machines"
+
+  s.files = ["History.txt", "Manifest.txt", "PostInstall.txt", "README.rdoc", "Rakefile", "bin/256colors2.pl", "bin/colortest", "bin/vixplode", "lib/dotfiles/aliases", "lib/dotfiles/gvimrc", "lib/dotfiles/vim/.VimballRecord", "lib/dotfiles/vim/after/ftplugin/actionscript_snippets.vim", "lib/dotfiles/vim/after/ftplugin/aspvbs_snippets.vim", "lib/dotfiles/vim/after/ftplugin/c_snippets.vim", "lib/dotfiles/vim/after/ftplugin/css_snippets.vim", "lib/dotfiles/vim/after/ftplugin/django_model_snippets.vim", "lib/dotfiles/vim/after/ftplugin/django_template_snippets.vim", "lib/dotfiles/vim/after/ftplugin/f-script_snippets.vim", "lib/dotfiles/vim/after/ftplugin/haskell_snippets.vim", "lib/dotfiles/vim/after/ftplugin/html_snippets.vim", "lib/dotfiles/vim/after/ftplugin/java_snippets.vim", "lib/dotfiles/vim/after/ftplugin/javascript_snippets.vim", "lib/dotfiles/vim/after/ftplugin/latex_snippets.vim", "lib/dotfiles/vim/after/ftplugin/logo_snippets.vim", "lib/dotfiles/vim/after/ftplugin/markdown_snippets.vim", "lib/dotfiles/vim/after/ftplugin/movable_type_snippets.vim", "lib/dotfiles/vim/after/ftplugin/objc_snippets.vim", "lib/dotfiles/vim/after/ftplugin/ocaml_snippets.vim", "lib/dotfiles/vim/after/ftplugin/perl_snippets.vim", "lib/dotfiles/vim/after/ftplugin/php_snippets.vim", "lib/dotfiles/vim/after/ftplugin/phpdoc_snippets.vim", "lib/dotfiles/vim/after/ftplugin/propel_snippets.vim", "lib/dotfiles/vim/after/ftplugin/python_snippets.vim", "lib/dotfiles/vim/after/ftplugin/rails_snippets.vim", "lib/dotfiles/vim/after/ftplugin/ruby_snippets.vim", "lib/dotfiles/vim/after/ftplugin/sh_snippets.vim", "lib/dotfiles/vim/after/ftplugin/slate_snippets.vim", "lib/dotfiles/vim/after/ftplugin/smarty_snippets.vim", "lib/dotfiles/vim/after/ftplugin/symfony_snippets.vim", "lib/dotfiles/vim/after/ftplugin/tcl_snippets.vim", "lib/dotfiles/vim/after/ftplugin/template_toolkit_snippets.vim", "lib/dotfiles/vim/after/ftplugin/tex_snippets.vim", "lib/dotfiles/vim/after/ftplugin/xhtml_snippets.vim", "lib/dotfiles/vim/autoload/fakeclip.vim", "lib/dotfiles/vim/autoload/rails.vim", "lib/dotfiles/vim/autoload/rubycomplete.vim", "lib/dotfiles/vim/colors/inkpot.vim", "lib/dotfiles/vim/colors/ir_black.vim", "lib/dotfiles/vim/colors/ir_black_mod.vim", "lib/dotfiles/vim/colors/railscasts.vim", "lib/dotfiles/vim/colors/rubyblue.vim", "lib/dotfiles/vim/colors/twilight.vim", "lib/dotfiles/vim/colors/twilight2.vim", "lib/dotfiles/vim/colors/wombat256.vim", "lib/dotfiles/vim/compiler/eruby.vim", "lib/dotfiles/vim/compiler/ruby.vim", "lib/dotfiles/vim/compiler/rubyunit.vim", "lib/dotfiles/vim/doc/NERD_tree.txt", "lib/dotfiles/vim/doc/fakeclip.txt", "lib/dotfiles/vim/doc/matchit.txt", "lib/dotfiles/vim/doc/project.txt", "lib/dotfiles/vim/doc/rails.txt", "lib/dotfiles/vim/doc/snippets_emu.txt", "lib/dotfiles/vim/doc/surround.txt", "lib/dotfiles/vim/doc/tags", "lib/dotfiles/vim/filetype.vim", "lib/dotfiles/vim/ftdetect/gist.vim", "lib/dotfiles/vim/ftdetect/ruby.vim", "lib/dotfiles/vim/ftplugin/eruby.vim", "lib/dotfiles/vim/ftplugin/ruby.vim", "lib/dotfiles/vim/indent/eruby.vim", "lib/dotfiles/vim/indent/ruby.vim", "lib/dotfiles/vim/plugin/NERD_tree.vim", "lib/dotfiles/vim/plugin/comments.vim", "lib/dotfiles/vim/plugin/fakeclip.vim", "lib/dotfiles/vim/plugin/fuzzyfinder.vim", "lib/dotfiles/vim/plugin/fuzzyfinder_textmate.vim", "lib/dotfiles/vim/plugin/gist.vim", "lib/dotfiles/vim/plugin/gitdiff.vim", "lib/dotfiles/vim/plugin/matchit.vim", "lib/dotfiles/vim/plugin/mru.vim", "lib/dotfiles/vim/plugin/rails.vim", "lib/dotfiles/vim/plugin/rspec.vim", "lib/dotfiles/vim/plugin/snippets.vim", "lib/dotfiles/vim/plugin/snippetsEmu.vim", "lib/dotfiles/vim/plugin/supertab.vim", "lib/dotfiles/vim/plugin/surround.vim", "lib/dotfiles/vim/ref_vimrc", "lib/dotfiles/vim/ruby/fuzzy_file_finder.rb", "lib/dotfiles/vim/syntax/eruby.vim", "lib/dotfiles/vim/syntax/haml.vim", "lib/dotfiles/vim/syntax/mkd.vim", "lib/dotfiles/vim/syntax/ruby.vim", "lib/dotfiles/vim/syntax/sass.vim", "lib/dotfiles/vimrc", "lib/vixplode/cli.rb", "lib/vixploder.rb", "script/console", "script/destroy", "script/generate", "spec/spec.opts", "spec/spec_helper.rb", "spec/vixplode_cli_spec.rb", "spec/vixploder_spec.rb", "tasks/rspec.rake"]
+
   s.email = ["tom.kersten@cosyntech.com"]
   s.has_rdoc = false
-  s.post_install_message = %q{PostInstall.txt}
+
+  s.post_install_message = <<-END_OF_TEXT
+    To use vixploder, execute:
+
+      vixplode
+
+    ...and try out VI. If you have issues with a blinking background
+    or errors on startup, confirm your system meets all the
+    requirements outlined in the README (http://bit.ly/m9Wk).
+
+    If you want to 'undo' the changes, you can unlink the newly created
+    files in your home directory and restore them from ~/vixploder_backups:
+
+      mv ~/vixploder_backups/.* ~/
+
+    For more information on vixploder, see https://github.com/tomkersten/vixploder
+
+    NOTE: To create private Gists on http://gist.github.com, make sure you have set up
+    your username/token entries in your ~/.gitconfig file (refer to: http://bit.ly/OCgg)
+
+    Enjoy!
+  END_OF_TEXT
+
   s.rdoc_options = ["--main", "README.rdoc"]
   s.require_paths = ["lib"]
-  s.rubyforge_project = %q{vixploder}
   s.rubygems_version = %q{1.3.1}
+  s.executables = ["vixplode"]
   s.summary = %q{Tool for simplifying the distribution of environment configuration files ('dotfiles') across multiple *nix-based nodes.}
 
   if s.respond_to? :specification_version then

@@ -91,7 +91,19 @@ The +vixplode+ command will backup & symlink any files named <tt>.[filename]</tt
 
 == INSTALL:
 
-- Install instructions to come...
+=== Installing as a gem:
+If you already have github set up as a source for gem:
+
+  sudo gem install tomkersten-vixploder
+
+Otherwise:
+
+  sudo gem install tomkersten-vixploder --source http://gems.github.com
+
+=== Installing manually:
+
+1. Clone the repository (or download the repository and unpack it) to a stable local location
+2. Execute the 'bin/vixplode' command in the source directory
 
 == LICENSE:
 
