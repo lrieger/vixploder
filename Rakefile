@@ -5,7 +5,7 @@ require 'hanna/rdoctask'
 $hoe = Hoe.new('vixploder', Vixploder::VERSION) do |p|
   p.developer('Tom Kersten', 'tom@whitespur.com')
   p.changes              = p.paragraphs_of("History.txt", 0..1).join("\n\n")
-  p.post_install_message = File.read("PostInstall.txt").delete("\r")
+  p.post_install_message = p.paragraphs_of('PostInstall.txt', 0..10).join("\n\n")
   p.summary              = %q{Tool for simplifying the distribution of environment configuration files ('dotfiles') across multiple *nix-based nodes.}
   p.extra_dev_deps = [
     ['newgem', ">= #{::Newgem::VERSION}"]
@@ -13,7 +13,6 @@ $hoe = Hoe.new('vixploder', Vixploder::VERSION) do |p|
 
   p.clean_globs |= %w[**/.DS_Store tmp *.log]
   path = (p.rubyforge_name == p.name) ? p.rubyforge_name : "\#{p.rubyforge_name}/\#{p.name}"
-  p.remote_rdoc_dir = File.join(path.gsub(/^#{p.rubyforge_name}\/?/,''), 'rdoc')
   p.rsync_args = '-av --delete --ignore-errors'
 end
 

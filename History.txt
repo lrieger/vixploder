@@ -1,3 +1,10 @@
+== 0.1.4 2009-01-13
+
+* Removed auto-folding
+* Updated README.txt (why was the description so long)
+* Officially included a couple scripts for testing 256-color soupport in your terminal (256colors2.pl, colortest)
+
+
 == 0.0.1 2008-11-26
 
 * 1 major enhancement:

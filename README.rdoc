@@ -1,7 +1,11 @@
 = vixploder - "it may explode your vim"
 
 == DESCRIPTION:
-A simple 'dotfiles' management tool used to distribute common configuration files across multiple machines (initially consisting of a solid base for VIM, a few handy aliases for Rails development, and working with Git). The idea is not incredibly novel, but after realizing how poor the default VIM configuration is (at least on OS X), I wanted to be able to share mine with a few friends. Standard configuration files for other tools can easily be added to the tool, such as a core +.profile+, +.screenrc+ file, or Emacs config files...VIM is just the "test-case" for the distribution method at this point.
+A simple 'dotfiles' management tool used to distribute common configuration files across multiple machines.
+
+
+== DETAILS
+The idea is not incredibly novel, but after realizing how poor the default VIM configuration is (at least on OS X), I wanted to be able to share mine with a few friends. Standard configuration files for other tools can easily be added to the tool, such as a core +.profile+, +.screenrc+ file, or Emacs config files...VIM is just the "test-case" for the distribution method at this point.
 
 Vixploder is designed to give room for machine-/user-specific overrides. For example, the +.vimrc+ file sources a <tt>~/.local_vimrc</tt> file. These 'local dotfiles' are intentionally left out of version control and intended for settings that are either machine-specific or something a user may not want to be in a publicly-available repository. A couple examples of such content would be aliases for SSH-ing into a server with a particular username (ie: +site+ aliased to <tt>ssh my_username@my_website.com</tt>), or aliases to machine-specific paths for a project directory (both of these examples would be for your shell setup files, not vimrc, but the logic is the same...maybe you want a different colorscheme on a particular server in VIM).
 
