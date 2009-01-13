@@ -86,8 +86,10 @@ endif
 set foldmethod=syntax               "Syntax highlighting items specify folds
 
 "Not sure how I feel about these two yet
-set foldopen=all                    "Auto-opens folds on all possible 'autocmds'
-set foldclose=all                   "Auto-closes folds on all possible autocmds
+"Commenting out...probably not 'sane default' people would expect. Leaving 
+"for reference...
+"set foldopen=all                    "Auto-opens folds on all possible 'autocmds'
+"set foldclose=all                   "Auto-closes folds on all possible autocmds
 
 set foldtext=getline(v:foldstart)   "Set text displayed in "foldbar" when code is folded
 set fillchars=fold:\                "Fill foldline "empty space" with...empty spaces (instead of default "-" character)
